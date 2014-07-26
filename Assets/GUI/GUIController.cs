@@ -21,6 +21,20 @@ public class GUIController : MonoBehaviour {
         }
     }
 
+    public string path = null;
+    public string Path {
+        set {
+            this.path = value;
+            PlayerPrefs.SetString("path", value);
+        }
+        get {
+            return String.IsNullOrEmpty(path) ?
+                PlayerPrefs.GetString("path", Application.dataPath) :
+                path;
+        }
+    }
+
+
     public string keywords = null;
     public string Keywords {
         set {
@@ -56,12 +70,16 @@ public class GUIController : MonoBehaviour {
         GUI.Label(new Rect(10,130,250,24), "Keywords");
         this.Keywords = GUI.TextField(new Rect(10,150,250,24), this.Keywords);
 
-        if(GUI.Button(new Rect(10,200,250,24),"Reset")) {
+        GUI.Label(new Rect(10,180,250,24), "Path");
+        this.Path = GUI.TextField(new Rect(10,200,250,24), this.Path);
+
+        if(GUI.Button(new Rect(10,230,250,24),"Reset")) {
             this.AngleVelocity = 1.0f;
+            this.Path = Application.dataPath;
             this.Keywords = "ゆるゆり users";
         }
 
-        if(GUI.Button(new Rect(10,240,250,24),"Hide menu")){
+        if(GUI.Button(new Rect(10,260,250,24),"Hide menu")){
             isMenu = false;
         }
     }
