@@ -1,9 +1,13 @@
 using UnityEngine;
+using System.Collections.Generic;
 using System.Collections;
 using System.IO;
+using System.Linq;
 
 public class Loader : MonoBehaviour {
     public float radius = 1.0f;
+    public float angleVelocity = 1.0f;
+    private List<GameObject> gameObjects = new List<GameObject>();
 
     private byte[] LoadBytes(string path) {
 		FileStream fs = new FileStream(path, FileMode.Open);
@@ -53,17 +57,13 @@ public class Loader : MonoBehaviour {
         string path = "/Users/mzp/Pictures/yuriyuri";
 
         string[] xs = System.IO.Directory.GetFiles (@path, "*.jpg");
-        foreach(string x in xs) {
-            CreateImagePlane(CreateTexture(x));
-        }
+        this.gameObjects = xs.Select(x => CreateImagePlane(CreateTexture(x))).ToList();
 	}
 
-    private float Angle(Vector3 x, Vector3 y) {
-        Vector3 referenceRight= Vector3.Cross(Vector3.up, x);
-        Vector3 newDirection = x;
-        float sign = Mathf.Sign(Vector3.Dot(newDirection, referenceRight));
-
-        return sign * Vector3.Angle(x, y);
+    private void FixedUpdate() {
+        foreach(var x in gameObjects) {
+            x.transform.RotateAround(Vector3.zero, Vector3.up, angleVelocity * Time.deltaTime);
+        }
     }
 
 }
