@@ -26,7 +26,6 @@ public class Loader : MonoBehaviour {
     private GameObject CreateImagePlane(Texture2D tex) {
         GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Plane);
 
-        obj.AddComponent("MeshRenderer");
         obj.renderer.material.mainTexture = tex;
 
         // adjust size
@@ -35,7 +34,7 @@ public class Loader : MonoBehaviour {
         // locate on a circle
         float r = radius + Random.Range(0,1.0f);
         float x = Random.Range(- r, r);
-        float z = Mathf.Sqrt(r - x * x);
+        float z = Mathf.Sqrt(r*r - x * x);
         float y = Random.Range(0.5f,2.0f);
         int sign = Random.Range(0,2) == 0 ? -1 : 1;
         z *= sign;
