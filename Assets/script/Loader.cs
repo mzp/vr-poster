@@ -9,6 +9,8 @@ public class Loader : MonoBehaviour {
     public GUIController guiController = null;
     private List<GameObject> gameObjects = new List<GameObject>();
 
+    private string prevPath = null;
+
     private byte[] LoadBytes(string path) {
 		FileStream fs = new FileStream(path, FileMode.Open);
 		using(BinaryReader bin = new BinaryReader(fs)){
@@ -52,16 +54,20 @@ public class Loader : MonoBehaviour {
         return obj;
     }
 
-	void Start () {
-        string path = "/Users/mzp/Pictures/yuriyuri";
-
-        string[] xs = System.IO.Directory.GetFiles (@path, "*.jpg");
-        this.gameObjects = xs.Select(x => CreateImagePlane(CreateTexture(x))).ToList();
-	}
-
     private void FixedUpdate() {
         foreach(var x in gameObjects) {
-            x.transform.RotateAround(Vector3.zero, Vector3.up, this.guiController.AngleVelocity * Time.deltaTime);
+            x.transform.RotateAround(Vector3.zero, Vector3.up,
+                                     this.guiController.AngleVelocity * Time.deltaTime);
+        }
+    }
+
+    private void Update() {
+        if(!guiController.isMenu && prevPath != guiController.Path) {
+            prevPath = guiController.Path;
+
+            this.gameObjects.ForEach(x => GameObject.Destroy(x));
+            string[] xs = System.IO.Directory.GetFiles (@guiController.Path, "*.jpg");
+            this.gameObjects = xs.Select(x => CreateImagePlane(CreateTexture(x))).ToList();
         }
     }
 

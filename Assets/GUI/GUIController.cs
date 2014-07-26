@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 
 public class GUIController : MonoBehaviour {
-    private bool isMenu = false;
+    public bool isMenu = false;
     public GUISkin customSkin = null;
 
     public bool isOculusRift = false;
