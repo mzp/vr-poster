@@ -6,7 +6,7 @@ using System.Linq;
 
 public class Loader : MonoBehaviour {
     public float radius = 1.0f;
-    public float angleVelocity = 1.0f;
+    public GUIController guiController = null;
     private List<GameObject> gameObjects = new List<GameObject>();
 
     private byte[] LoadBytes(string path) {
@@ -62,7 +62,7 @@ public class Loader : MonoBehaviour {
 
     private void FixedUpdate() {
         foreach(var x in gameObjects) {
-            x.transform.RotateAround(Vector3.zero, Vector3.up, angleVelocity * Time.deltaTime);
+            x.transform.RotateAround(Vector3.zero, Vector3.up, this.guiController.AngleVelocity * Time.deltaTime);
         }
     }
 
