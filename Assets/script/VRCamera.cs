@@ -27,11 +27,6 @@ public class VRCamera : MonoBehaviour
             mainCamera.SetActive(!guiController.isOculusRift);
         }
 
-  /*      Vector3 cameraPos = new Vector3(transform.position.x,1.5f, transform.position.z);
-
-        transform.position = cameraPos;
-        mainCamera.transform.position = cameraPos;
-*/
         if (Input.GetButtonDown("Fire2")) {
             OVRDevice.ResetOrientation();
         }

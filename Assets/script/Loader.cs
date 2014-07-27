@@ -7,6 +7,8 @@ using System.Net;
 
 public class Loader : MonoBehaviour {
     public float radius = 1.0f;
+    public float minHeight = 0.8f;
+    public float maxHeight = 1.5f;
     public GUIController guiController = null;
     private List<GameObject> gameObjects = new List<GameObject>();
     private PixivAPI pixivAPI = new PixivAPI();
@@ -63,7 +65,7 @@ public class Loader : MonoBehaviour {
         float r = radius + Random.Range(0,0.1f);
         float x = Random.Range(- r, r);
         float z = Mathf.Sqrt(r*r - x * x);
-        float y = Random.Range(0.5f,2.0f);
+        float y = Random.Range(minHeight, maxHeight);
         int sign = Random.Range(0,2) == 0 ? -1 : 1;
         z *= sign;
         obj.transform.position   = new Vector3(x, y, z);
