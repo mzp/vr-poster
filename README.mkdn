@@ -1,0 +1,62 @@
+# VR Poster
+
+![](https://raw.githubusercontent.com/mzp/vr-poster/master/misc/overview.png)
+
+Paste cute girl poster in a VR world.
+
+## Supported devices
+
+ * Mouse
+ * Oculus Rift(optional)
+
+## Supported OS
+
+ * MacOS X 10.9.4
+
+If you want to run on other OS, let's build and try it!
+
+## Download
+
+You could download from [releases page](https://github.com/mzp/vr-poster/releases).
+
+## How to use
+
+ 1. Run `vr-poster.app`
+ 2. Press left command key to open setting pane, and specify a directory which having jpeg images.
+ 3. Also, at setting pane, you could enable OculusRift, and adjust angular velocity.
+ 4. You could move with keyboard, rotate with mouse.
+ 5. You could reset camera pos with left alt.
+
+## (Experimental) Pixiv api
+
+When path is empty and keywords have some content at setting pane, pixiv API mode becomes enabled.
+
+At Pixiv API mode, images are searched and downloaded from Pixiv. But it requires some time, please wait patiently.
+
+## How to build
+
+ 1. Clone this repository.
+ 2. Launch Unity Pro.
+ 3. Press `File` -> `Open Project...`, and open this repository.
+ 4. Double click `Scene/main`.
+ 5. Let's develop and send pull request!
+
+## Licenses
+
+### Plugins
+Each plugin has its own license:
+
+ * [OculusRift SDK](http://www.oculusvr.com/)
+ * [Skybox Mesh](http://stereoarts.jp/)
+
+### Others
+All resource except described before is distributed under MIT License.
+
+The MIT License (MIT) Copyright (c) 2014 mzp
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
